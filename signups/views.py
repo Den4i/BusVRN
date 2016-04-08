@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, RequestContext
+from django.shortcuts import render_to_response
 
 # Create your views here.
 
@@ -10,4 +10,4 @@ def home(request):
     if form.is_valid():
         save_it = form.save(commit=False)
         save_it.save()
-    return render_to_response("signups/signup.html", locals(), context_instance=RequestContext(request))
+    return render_to_response("signups/signup.html")
