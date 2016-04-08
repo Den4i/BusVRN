@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-            {% if "html_safe" in message.tags %} {{ message|safe }}
-                {% else %} {{ message }}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+{% extends 'base.html' %}
 
-    <h1>{{ title }}</h1>
+{% block head_title %}{{ instance.title }}!{{ block.super }}{% endblock head_title %}
+
+{% block content %}
+    <div class='col-sm-6 col-sm-offset-3'>
+
+    <h1>{{ title }} <small>{{ instance.timestamp }}</small></h1>
     {{ instance.title }}<br/>
-    {{ instance.content }}<br/>
+    {{ instance.content | linebreaks }}<br/>
     {{ instance.updated }}<br/>
     {{ instance.timestamp }}<br/>
-</body>
-</html>
+    </div>
+{% endblock content %}
