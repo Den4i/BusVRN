@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 
 # Create your views here.
 
@@ -45,6 +46,9 @@ def post_update(request, slug=None):
 
 def post_detail(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
+    if instance.publish > timezone.now().date() or instance.draft:
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     context = {
         "title": instance.title,
         "instance": instance,
@@ -53,10 +57,13 @@ def post_detail(request, slug=None):
 
 
 def post_list(request):
-    queryset_list = Post.objects.all()
-    paginator = Paginator(queryset_list, 10)    # Show 10 contacts per page
-
-    page = request.GET.get('page')
+    today = timezone.now().date()
+    queryset_list = Post.objects.active()
+    if request.user.is_staff or request.user.is_superuser:
+            queryset_list = Post.objects.all()
+    paginator = Paginator(queryset_list, 10)                    # Show 10 contacts per page
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
     except PageNotAnInteger:
@@ -68,7 +75,9 @@ def post_list(request):
 
     context = {
         'object_list': queryset,
-        "title": "list"
+        "title": "list",
+        "page_request_var": page_request_var,
+        "today": today
     }
     return render(request, "posts/post_list.html", context)
 
