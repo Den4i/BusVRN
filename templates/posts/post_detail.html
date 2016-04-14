@@ -12,7 +12,13 @@
     {% if instance.user.get_full_name %}
         <p>Author: {{ instance.user.get_full_name }}</p>
     {% endif %}
-    <h1>{{ title }} <small>{{ instance.timestamp }}</small></h1>
+    <h1>{{ title }}
+        <small>
+        {% if instance.draft %}
+            <span style="color: red">Draft</span> {{ instance.publish }}
+        {% endif %}
+        </small>
+    </h1>
     {{ instance.title }}<br/>
     {{ instance.content | linebreaks }}<br/>
     {{ instance.updated }}<br/>
