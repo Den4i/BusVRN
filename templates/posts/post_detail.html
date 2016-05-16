@@ -20,7 +20,8 @@
         </small>
     </h1>
     {{ instance.title }}<br/>
-    {{ instance.content | linebreaks }}<br/>
+    <div class="content-markdown">{{ instance.content}}</div>
+
     {{ instance.updated }}<br/>
     {{ instance.timestamp }}<br/>
     </div>
