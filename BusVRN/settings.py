@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     #local apps
     'Manuals',
     'signups',
-    'posts'
+    'comments',
+    'posts',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
