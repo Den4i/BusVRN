@@ -2,15 +2,18 @@ from django.conf import settings
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.db.models.signals import pre_save
-from django.utils.text import slugify
 from django.utils import timezone
+from django.contrib.contenttypes.models import ContentType
+from pytils.translit import slugify
 
+
+from comments.models import Comment
 
 # Create your models here.
 
 
 class PostManager(models.Manager):
-    def active(self, *args, **kwargs):
+    def active(self):
         return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
 
 
@@ -44,6 +47,18 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-timestamp", "-updated"]
+
+    @property
+    def comments(self):
+        instance = self
+        qs = Comment.objects.filter_by_instance(instance)
+        return qs
+
+    @property
+    def get_content_type(self):
+        instance = self
+        content_type = ContentType.objects.get_for_model(instance.__class__)
+        return content_type
 
 
 def create_slug(instance, new_slug=None):
