@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}
+    {{ instance.title }}!{{ block.super }}
+{% endblock head_title %}
+
+{% block content %}
+    {{ object }}
+
+    <div class='col-sm-6 col-sm-offset-3'>
+            <p>{{ comment.content }}</p>
+            <footer>от {{ comment.user }} | {{ comment.timestamp|timesince }} назад |
+                {% if comment.children.count > 0 %}
+                    {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %} {% endif %}
+                <a class='' href='{{ comment.get_absolute_url }}'>Thread</a>
+            </footer><hr/>
+
+            <div>
+                {% for child_comment in comment.children %}
+                <blockquote>
+                    <p>{{ child_comment.content }}</p>
+                    <footer>от {{ child_comment.user }} | {{ child_comment.timestamp|timesince }} назад </footer>
+                </blockquote>
+                {% endfor %}
+
+                {% if request.user.is_authenticated %}
+                <form method="POST" action="."> {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type='hidden' name='parent_id' value='{{ comment.id }}'>
+                    <input type='submit' value='Reply' class='btn btn-default'>
+                </form>
+                {% else %}
+                    <p>You must login to comment </p>
+                {% endif %}
+            </div>
+
+        <hr/>
+
+    </div>
+
+{% endblock content %}
