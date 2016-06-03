@@ -1,6 +1,5 @@
 import re
-import datetime
-
+import math
 from django.utils.html import strip_tags
 
 
@@ -13,8 +12,7 @@ def count_words(html_string):
 
 
 def get_read_time(html_string):
+    """посчитать время необходимое для прочтения"""
     count = count_words(html_string)
-    read_time_min = count/161.0     # средняя скорость чтения на кириллице
-    read_time_second = read_time_min*60
-    read_time = str(datetime.timedelta(seconds=read_time_second))
-    return read_time
+    read_time_min = math.ceil(count/161.0)          # средняя скорость чтения на кириллице
+    return int(read_time_min)
