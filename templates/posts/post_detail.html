@@ -1,38 +1,38 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-
 {% block head_title %}
     {{ instance.title }}!{{ block.super }}
 {% endblock head_title %}
 
 {% block content %}
     <div class='col-sm-6 col-sm-offset-3'>
-    {% if instance.image %}
-        <img src='{{ instance.image.url }}' class="img-responsive" />
-    {% endif %}
+    {% if instance.image %}<img src='{{ instance.image.url }}' class="img-responsive" />{% endif %}
     {% if instance.user.get_full_name %}
         <p>Author: {{ instance.user.get_full_name }}</p>
     {% endif %}
     <h1>{{ title }}
         <small>
         {% if instance.draft %}
-            <span style="color: red">Draft</span> {{ instance.publish }}
+            <span>Draft</span> {{ instance.publish }}
         {% endif %}
         </small>
     </h1>
-    {{ instance.title }}<br/>
+    <p>Время прочтения:
+        {% if instance.read_time <= 1 %} <= 1 минуты {% else %}
+            {% if instance.read_time > 1 and instance.read_time < 5 %} {{ instance.read_time }} минуты {% else %}
+                {{ instance.read_time }} минут {% endif %} {% endif %}</p>
     <div class="content-markdown">{{ instance.content}}</div>
 
-    {{ instance.updated }}<br/>
-    {{ instance.timestamp }}<hr/>
+    <p>Время добавления: {{ instance.timestamp }}</p>
+    <p>Время обновления: {{ instance.updated }}</p>
 
     <div>
-        <p class='lead'>Comments</p>
+        <p class='lead'>Комментарии:</p>
         {% if request.user.is_authenticated %}
         <form method="POST" action="."> {% csrf_token %}
             {{ comment_form|crispy }}
-            <input type='submit' value='Post comment' class='btn btn-default'>
+            <input type='submit' value='Добавить комментарий' class='btn btn-default'>
         </form>
         {% else %}
         <p>You must login to comment </p>
@@ -45,7 +45,7 @@
             <footer>от {{ comment.user }} | {{ comment.timestamp|timesince }} назад |
                 {% if comment.children.count > 0 %}
                     {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %} | {% endif %}
-                <a class='comment-reply-btn' href='#'>Reply</a> |
+                <a class='comment-reply-btn' href='#'>Ответить</a> |
                 <a class='' href='{{ comment.get_absolute_url }}'>Thread</a>
             </footer>
 
