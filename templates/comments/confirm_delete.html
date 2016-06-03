@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}
+    {{ instance.title }}!{{ block.super }}
+{% endblock head_title %}
+
+{% block content %}
+    <h1>Подтверждение удаления</h1>
+    <div class='col-sm-6 col-sm-offset-3'>
+                {% if request.user.is_authenticated %}
+                <form method="POST" action="."> {% csrf_token %}
+                    <p>Вы уверены, что хотите удалить комментарий? {{ object.content }}</p>
+                    <input type='submit' value='Да' class='btn btn-default'>
+                    <a href="{{ objects.get_absolute_url }}" type="submit" class='btn btn-default'>Отмена</a>
+                </form>
+                {% else %}
+                    <p>You must login to comment </p>
+                {% endif %}
+            </div>
+
+        <hr/>
+
+    </div>
+
+{% endblock content %}
