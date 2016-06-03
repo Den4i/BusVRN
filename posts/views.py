@@ -4,15 +4,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.db.models import Q
-
-# Create your views here.
+from django.contrib.contenttypes.models import ContentType
 
 from .models import Post
 from .forms import PostForm
 from comments.models import Comment
 from comments.forms import CommentForm
-from django.contrib.contenttypes.models import ContentType
-from .utils import get_read_time, count_words
 
 
 def post_create(request):
@@ -54,9 +51,6 @@ def post_detail(request, slug=None):
     if instance.publish > timezone.now().date() or instance.draft:
         if not request.user.is_staff or not request.user.is_superuser:
             raise Http404
-
-    print(get_read_time(instance.content))
-    print(count_words(instance.content))
 
     initial_data = {
         "content_type": instance.get_content_type,
