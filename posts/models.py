@@ -8,6 +8,7 @@ from pytils.translit import slugify
 
 
 from comments.models import Comment
+from .utils import get_read_time, count_words
 
 # Create your models here.
 
@@ -34,8 +35,9 @@ class Post(models.Model):
     content = models.TextField()
     draft = models.BooleanField(default=False)
     publish = models.DateField(auto_now_add=False, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=True, auto_now=False)
-    timestamp = models.DateTimeField(auto_now_add=False, auto_now=True)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+    read_time = models.IntegerField()
 
     objects = PostManager()
 
@@ -76,6 +78,10 @@ def create_slug(instance, new_slug=None):
 def pre_save_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
+
+    if instance.content:
+        read_time = get_read_time(instance.content)
+        instance.read_time = read_time
 
 
 pre_save.connect(pre_save_post_receiver, sender=Post)
