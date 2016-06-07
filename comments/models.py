@@ -4,8 +4,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 
-# Create your models here.
-
 
 class CommentManager(models.Manager):
     def all(self):
@@ -38,6 +36,9 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse("comments:thread", kwargs={"id": self.id})
+
+    def get_delete_url(self):
+        return reverse("comments:delete", kwargs={"id": self.id})
 
     def children(self):
         return Comment.objects.filter(parent=self)
