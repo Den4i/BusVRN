@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from .forms import CommentForm
 from .models import Comment
@@ -8,6 +8,12 @@ from .models import Comment
 
 def comment_delete(request, id):
     obj = get_object_or_404(Comment, id=id)
+
+    if obj.user != request.user:
+        response = HttpResponse('У Вас недостаточно прав для удаления данного комментария')
+        response.status_code = 403
+        return response
+
     if request.method == "POST":
         parent_obj_url = obj.content_object.get_absolute_url()
         obj.delete()
@@ -20,6 +26,10 @@ def comment_delete(request, id):
 
 def comment_thread(request, id):
     obj = get_object_or_404(Comment, id=id)
+
+    if not obj.is_parent:
+        obj = obj.parent
+
     content_object = obj.content_object
     content_id = obj.content_object.id
 
