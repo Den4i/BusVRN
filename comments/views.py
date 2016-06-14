@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from .forms import CommentForm
 from .models import Comment
 
 
+@login_required
 def comment_delete(request, id):
     obj = get_object_or_404(Comment, id=id)
 
@@ -38,7 +40,7 @@ def comment_thread(request, id):
         "object_id": obj.object_id,
     }
     form = CommentForm(request.POST or None, initial=initial_data)
-    if form.is_valid():
+    if form.is_valid() and request.user.is_authenticated():
         c_type = form.cleaned_data.get("content_type")
         content_type = ContentType.objects.get(model=c_type)
         obj_id = form.cleaned_data.get("object_id")
