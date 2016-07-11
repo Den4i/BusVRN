@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 
 from .forms import CommentForm
@@ -31,9 +31,6 @@ def comment_thread(request, id):
 
     if not obj.is_parent:
         obj = obj.parent
-
-    content_object = obj.content_object
-    content_id = obj.content_object.id
 
     initial_data = {
         "content_type": obj.content_type,
