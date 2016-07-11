@@ -24,7 +24,6 @@ class UserLoginForm(forms.Form):
                 raise forms.ValidationError("Не верный пароль")
             if not user.is_active:
                 raise forms.ValidationError("Пользователь не активирован")
-
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
 
@@ -51,5 +50,4 @@ class UserRegisterForm(forms.ModelForm):
         email_qs = User.objects.filter(email=email)
         if email_qs.exists():
             raise forms.ValidationError("Такой почтовый адрес уже зарегистрирован")
-
         return super(UserRegisterForm, self).clean(*args, **kwargs)
