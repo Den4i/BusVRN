@@ -18,7 +18,7 @@
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy}}
-    <input type="submit" class="btn btn-default" value="Create Post">
+    <input type="submit" class="btn btn-default" value="Создать новость"><hr>
     </form>
     </div>
 {% endblock content %}
