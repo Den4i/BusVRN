@@ -19,14 +19,12 @@ class PostManager(models.Manager):
 
 
 def upload_location(instance, filename):
-    # filebase, extension = filename.split(".")
-    # return "%s/%s.%s" % (instance.id, instance.id, extension)
     return "%s/%s" % (instance.id, filename)
 
 
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
-    title = models.CharField(max_length=120)
+    title = models.CharField(max_length=120, verbose_name='Заголовок')
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, width_field="width_field",
                               height_field="height_field")
@@ -34,8 +32,8 @@ class Post(models.Model):
     height_field = models.IntegerField(default=0)
     content = models.TextField()
     draft = models.BooleanField(default=False)
-    publish = models.DateField(auto_now_add=False, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+    publish = models.DateField(auto_now_add=False, auto_now=False, verbose_name='Дата публикации')
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name='Время обновления')
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     read_time = models.IntegerField()
 
