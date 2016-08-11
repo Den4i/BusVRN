@@ -37,17 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # third apps
     'pagedown',
     'crispy_forms',
+    'registration',
     #local apps
     'Manuals',
     'comments',
     'posts',
-    'accounts'
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,11 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_URL='/login/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    #'/var/www/static/',
 ]
 
 
@@ -147,3 +144,11 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# DJANGO REGISTRATION REDUX SETTINGS
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
