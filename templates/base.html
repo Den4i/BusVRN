@@ -62,7 +62,7 @@
               <input type="password" name="password" class="form-control">
             </div>
                 <button type="submit" class="btn btn-success">Войти</button>
-              <p style="color: whitesmoke">Забыли пароль? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+              <p style="color: whitesmoke"><a href="{% url 'auth_password_reset' %}">Забыли пароль? </a></p>
           </form>
         </div><!--/.navbar-collapse -->
       {% endif %}
