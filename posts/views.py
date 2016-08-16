@@ -10,6 +10,7 @@ from .models import Post
 from .forms import PostForm
 from comments.models import Comment
 from comments.forms import CommentForm
+from datetime import datetime
 
 
 def post_create(request):
@@ -107,7 +108,6 @@ def post_list(request):
                                              Q(user__first_name__icontains=query) |
                                              Q(user__last_name__icontains=query)
                                              ).distinct()
-
     paginator = Paginator(queryset_list, 10)                    # Show 10 contacts per page
     page_request_var = "page"
     page = request.GET.get(page_request_var)
@@ -120,11 +120,32 @@ def post_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         queryset = paginator.page(paginator.num_pages)
 
+    visits = request.session.get('visits')
+    if not visits:
+        visits = 1
+    reset_last_visit_time = False
+
+    last_visit = request.session.get('last_visit')
+    if last_visit:
+        last_visit_time = datetime.strptime(last_visit, "%d-%m-%Y %H:%M:%S")
+
+        if (datetime.now() - last_visit_time).days > 0:
+            visits = visits + 1
+            reset_last_visit_time = True
+    else:
+        reset_last_visit_time = True
+
+    if reset_last_visit_time:
+        request.session['last_visit'] = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        request.session['visits'] = visits
+
     context = {
         'object_list': queryset,
         "title": "list",
         "page_request_var": page_request_var,
-        "today": today
+        "today": today,
+        "visits": visits,
+        "last_visit": last_visit,
     }
     return render(request, "posts/post_list.html", context)
 
