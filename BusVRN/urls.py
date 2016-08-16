@@ -24,10 +24,7 @@ urlpatterns = [
     url(r'^comments/', include("comments.urls", namespace='comments')),
     url(r'^Manuals/objects/', include('Manuals.urls')),
     url(r'^', include("posts.urls", namespace='posts')),
-
-
     url(r'^accounts/', include('registration.backends.default.urls')),
-
 ]
 
 if settings.DEBUG:
