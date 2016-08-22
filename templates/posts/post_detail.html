@@ -22,14 +22,27 @@
         {% endif %}
         </small>
     </h1>
+
     <p>Время прочтения:
         {% if instance.read_time <= 1 %} <= 1 минуты {% else %}
             {% if instance.read_time > 1 and instance.read_time < 5 %} {{ instance.read_time }} минуты {% else %}
                 {{ instance.read_time }} минут {% endif %} {% endif %}</p>
-    <div class="content-markdown">{{ instance.content}}</div>
+
+    <div class="content-markdown">{{ instance.content }}</div>
 
     <p>Время добавления: {{ instance.timestamp }}</p>
-    <p>Время обновления: {{ instance.updated }}</p>
+    <p>Количество просмотров: {{ instance.view }}</p>
+
+
+    {# Добавление лайка #}
+    <p><strong id="like_count">{{ instance.likes }}</strong> people like this category
+    {% if user.is_authenticated %}
+        <button id="likes" data-postid="{{instance.id}}" class="btn btn-primary" type="button">
+            <span class="glyphicon glyphicon-thumbs-up"></span>Like
+        </button>
+    {% endif %}
+    </p>
+
 
     <div>
         <p class='lead'>Комментарии:</p>
