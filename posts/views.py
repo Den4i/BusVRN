@@ -1,10 +1,11 @@
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.decorators import login_required
 
 from .models import Post
 from .forms import PostForm
@@ -57,6 +58,9 @@ def post_detail(request, slug=None):
         "content_type": instance.get_content_type,
         "object_id": instance.id,
     }
+
+    instance.view = instance.view + 1
+    instance.save()
 
     form = CommentForm(request.POST or None, initial=initial_data)
     if form.is_valid() and request.user.is_authenticated():
@@ -158,4 +162,18 @@ def post_delete(request, slug=None):
     messages.success(request, "Successfully deleted")
     return redirect("posts:list")
 
+
+@login_required
+def like_post(request):
+    post_id = None
+    if request.method == 'GET':
+        post_id = request.GET['post_id']
+    likes = 0
+    if post_id:
+        post = Post.objects.get(id=int(post_id))
+        if post:
+            likes = post.likes + 1
+            post.likes = likes
+            post.save()
+    return HttpResponse(likes)
 
