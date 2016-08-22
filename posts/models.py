@@ -33,9 +33,11 @@ class Post(models.Model):
     content = models.TextField()
     draft = models.BooleanField(default=False)
     publish = models.DateField(auto_now_add=False, auto_now=False, verbose_name='Дата публикации')
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name='Время обновления')
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     read_time = models.IntegerField()
+
+    view = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
 
     objects = PostManager()
 
@@ -46,7 +48,7 @@ class Post(models.Model):
         return reverse("posts:detail", kwargs={"slug": self.slug})
 
     class Meta:
-        ordering = ["-timestamp", "-updated"]
+        ordering = ["-timestamp"]
 
     @property
     def comments(self):
