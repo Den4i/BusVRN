@@ -151,6 +151,7 @@ def post_list(request):
         "visits": visits,
         "last_visit": last_visit,
     }
+
     return render(request, "posts/post_list.html", context)
 
 

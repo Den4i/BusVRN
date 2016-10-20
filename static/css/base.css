@@ -6,3 +6,15 @@
 .comment-reply{
     display: none;
 }
+
+p {
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.navbar-header .navbar-brand{
+    color: whitesmoke;
+}
+
+.body {
+    background-color: #C0C0C0;
+}

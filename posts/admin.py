@@ -9,7 +9,7 @@ class PostUpAdmin(admin.ModelAdmin):
     list_display = ["title", "timestamp"]
     list_filter = ["timestamp"]
     search_fields = ["title", "content"]
-    list_editable = ['title']
+    #list_editable = ['title']
 
     class Meta:
         model = Post

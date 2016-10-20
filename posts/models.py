@@ -5,12 +5,8 @@ from django.db.models.signals import pre_save
 from django.utils import timezone
 from django.contrib.contenttypes.models import ContentType
 from pytils.translit import slugify
-
-
 from comments.models import Comment
-from .utils import get_read_time, count_words
-
-# Create your models here.
+from .utils import get_read_time
 
 
 class PostManager(models.Manager):
@@ -25,7 +21,7 @@ def upload_location(instance, filename):
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     title = models.CharField(max_length=120, verbose_name='Заголовок')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, width_field="width_field",
                               height_field="height_field")
     width_field = models.IntegerField(default=0)
@@ -36,8 +32,8 @@ class Post(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     read_time = models.IntegerField()
 
-    view = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
+    view = models.PositiveIntegerField(default=0)
+    likes = models.PositiveIntegerField(default=0)
 
     objects = PostManager()
 

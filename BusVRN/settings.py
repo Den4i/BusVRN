@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Manuals',
     'comments',
     'posts',
+    'feedback'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -85,12 +86,12 @@ WSGI_APPLICATION = 'BusVRN.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'zaUgD5Lt',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5433',
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed'
         }
@@ -152,3 +153,10 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+
+# SEND EMAIL
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'dglonassik@gmail.com'
+EMAIL_HOST_PASSWORD = 'Xaej5liM1'
+EMAIL_USE_TLS = True

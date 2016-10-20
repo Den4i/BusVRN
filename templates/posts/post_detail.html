@@ -35,7 +35,7 @@
 
 
     {# Добавление лайка #}
-    <p><strong id="like_count">{{ instance.likes }}</strong> people like this category
+    <p><strong id="like_count"> Мне нравится: {{ instance.likes }}</strong>
     {% if user.is_authenticated %}
         <button id="likes" data-postid="{{instance.id}}" class="btn btn-primary" type="button">
             <span class="glyphicon glyphicon-thumbs-up"></span>Like

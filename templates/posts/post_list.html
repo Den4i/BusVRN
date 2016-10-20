@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<br>
 <div class="col-sm-6 col-sm-offset-3">
 <form method="get">
     <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search posts" name="q" value={{ request.GET.q }}>
+        <input class="form-control" type="text" placeholder="Поиск новости" name="q" value={{ request.GET.q }}>
         <span class="input-group-btn">
-            <input class="btn btn-default" type="submit" value="Search">
+            <input class="btn btn-default" type="submit" value="Искать">
         </span>
     </div>
 </form>
@@ -49,7 +49,7 @@
         {% endif %}
 
         <span class="current">
-            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+            Страница {{ object_list.number }} из {{ object_list.paginator.num_pages }}.
         </span>
 
         {% if object_list.has_next %}
