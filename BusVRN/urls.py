@@ -19,6 +19,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from posts.views import like_post
+from feedback.views import feedback_create, send_email
 
 
 urlpatterns = [
@@ -27,8 +28,12 @@ urlpatterns = [
     url(r'^Manuals/objects/', include('Manuals.urls')),
     url(r'^posts/', include("posts.urls", namespace='posts')),
     url(r'^accounts/', include('registration.backends.default.urls')),
-
     url(r'^like_post/$', like_post, name='like_post'),
+
+    url(r'^feedback/', feedback_create, name='feedback_create'),
+    url(r'^sending/', send_email, name='send_email'),
+
+    url(r'^', include("posts.urls", namespace='posts')),
 ]
 
 if settings.DEBUG:
