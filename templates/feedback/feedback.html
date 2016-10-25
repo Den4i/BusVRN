@@ -1,13 +1,15 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 
-<H1>Обратная связь</H1>
-    <H2>{{ user }}</H2>
+<H1 align="center">Обратная связь</H1>
+    <H2>Пользователь:{{ user }}</H2>
     <form action="/sending/" method="post">
         {% csrf_token %}
         {{ form | crispy}}
         <input type="submit" name="subSendMessage" value="Отправить">
     </form>
 {% endblock %}
+
