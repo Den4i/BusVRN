@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+#{% load staticfiles %}
+
+{% block content %}
+    <style>
+      #map {
+        width: 800px;
+        height: 500px;
+      }
+    </style>
+
+<div id="map"></div>
+
+     <!-- Google Maps JS API -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <!-- GMaps Library -->
+    <script src={% static "js/gmaps.js" %}></script>
+    <script>
+      /* Map Object */
+      var mapObj = new GMaps({
+        el: '#map',
+        lat: 51.661268,
+        lng: 39.200115
+      });
+    </script>
+{% endblock %}
