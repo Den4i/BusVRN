@@ -15,6 +15,12 @@ p {
     color: whitesmoke;
 }
 
-.body {
-    background-color: #C0C0C0;
+
+#id_phone{
+    width: 40%;
+}
+
+#id_subject{
+    width: 50%;
+    height: 60px;
 }
