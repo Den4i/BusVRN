@@ -19,8 +19,12 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from posts.views import like_post
-from feedback.views import feedback_create, send_email
 
+from django.shortcuts import render
+
+
+def get_map(request):
+    return render(request, 'mappa.html')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,9 +33,11 @@ urlpatterns = [
     url(r'^posts/', include("posts.urls", namespace='posts')),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^like_post/$', like_post, name='like_post'),
+    url(r'^feedback/', include("feedback.urls", namespace='feedback')),
 
-    url(r'^feedback/', feedback_create, name='feedback_create'),
-    url(r'^sending/', send_email, name='send_email'),
+    url(r'^mappa/', get_map, name='get_mappa'),
+
+
 
     url(r'^', include("posts.urls", namespace='posts')),
 ]
