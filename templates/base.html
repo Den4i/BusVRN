@@ -46,7 +46,8 @@
             {% else %}
                 <a class="navbar-brand" href="{% url "posts:create"%}">Добавить новость</a>
                 <a class="navbar-brand" href="{% url "auth_logout"%}">Выход</a>
-                <a class="navbar-brand" href="{% url "feedback_create"%}">Обратная связь</a>
+                <a class="navbar-brand" href="{% url "feedback:feedback_create"%}">Обратная связь</a>
+                <a class="navbar-brand" href={% url "get_mappa" %}>Карта</a>
 
             {% endif %}
         </div>
