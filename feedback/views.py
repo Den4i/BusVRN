@@ -5,7 +5,6 @@ from .forms import FeedbackForm
 from django.core.mail import send_mail, BadHeaderError
 
 
-
 def feedback_create(request):
 	if not request.user.is_staff or not request.user.is_superuser:
 		raise Http404

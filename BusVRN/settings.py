@@ -42,11 +42,11 @@ INSTALLED_APPS = [
     'pagedown',
     'crispy_forms',
     'registration',
-    #local apps
+    # local apps
     'Manuals',
     'comments',
     'posts',
-    'feedback'
+    'feedback',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -63,7 +63,7 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'BusVRN.urls'
 
 TEMPLATES = [
-    {
+	{
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
