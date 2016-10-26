@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'comments',
     'posts',
     'feedback',
+    'polls'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -63,7 +64,7 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'BusVRN.urls'
 
 TEMPLATES = [
-	{
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,

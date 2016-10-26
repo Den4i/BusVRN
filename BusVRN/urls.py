@@ -36,8 +36,7 @@ urlpatterns = [
     url(r'^feedback/', include("feedback.urls", namespace='feedback')),
 
     url(r'^mappa/', get_map, name='get_mappa'),
-
-
+    url(r'^polls/', include('polls.urls', namespace="polls")),
 
     url(r'^', include("posts.urls", namespace='posts')),
 ]
