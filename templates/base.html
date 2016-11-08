@@ -48,7 +48,7 @@
                 <a class="navbar-brand" href="{% url "auth_logout"%}">Выход</a>
                 <a class="navbar-brand" href="{% url "feedback:feedback_create"%}">Обратная связь</a>
                 <a class="navbar-brand" href={% url "get_mappa" %}>Карта</a>
-
+                <a class="navbar-brand" href="{% url "polls:index" %}">Опросы</a>
             {% endif %}
         </div>
 
@@ -76,6 +76,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     {% if request.user.is_authenticated %}
+    {% if request.session.visits == 1 %}
     <div class="jumbotron">
       <div class="container">
         <h1>Приветсвутю Вас, {{ request.user }}.</h1>
@@ -84,6 +85,7 @@
         <p><a class="btn btn-primary btn-lg" role="button" id="welcome">Скрыть приветствие</a></p>
       </div>
     </div>
+    {% endif %}
     {% endif %}
 
     <div class="container">
@@ -118,7 +120,6 @@
 
       <!-- My -->
     <script src="{% static "js/post/post-ajax.js" %}"></script>
-
 
 
 <script type="text/javascript">
@@ -165,12 +166,12 @@
         function() {
             $(this).css('color', 'black');
         });
-        
-        
+
         $("#welcome").click(function () {
            $('.jumbotron').hide();
         });
-        });
+    });
+
 </script>
 
   </body>
