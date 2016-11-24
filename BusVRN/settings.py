@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import configparser
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,6 +27,9 @@ SECRET_KEY = 'xs*q+cg9^notms9do#7(jyp(@rqz7ls*-b9=ky$)kud+$muf7s'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+conf = configparser.RawConfigParser()
+conf.read("config.cfg")
 
 
 # Application definition
@@ -81,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BusVRN.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -90,14 +93,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'zaUgD5Lt',
+        'PASSWORD': conf.get("base", "PASSWORD"),
         'HOST': '127.0.0.1',
         'PORT': '5433',
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed'
         }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -155,9 +157,10 @@ REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
+
 # SEND EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'dglonassik@gmail.com'
-EMAIL_HOST_PASSWORD = 'Xaej5liM1'
+EMAIL_HOST_USER = conf.get("email", "EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = conf.get("email", "EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
