@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="119b3821-68b3-41a8-bf3b-3656cd90d98c" name="Default" comment="" />
+    <list default="true" id="119b3821-68b3-41a8-bf3b-3656cd90d98c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BusVRN/settings.py" afterPath="$PROJECT_DIR$/BusVRN/settings.py" />
+    </list>
     <ignored path="BusVRN.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -47,8 +50,8 @@
       <file leaf-file-name="config.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -57,8 +60,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BusVRN/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="82" column="6" lean-forward="true" selection-start-line="82" selection-start-column="6" selection-end-line="82" selection-end-column="6" />
+            <state relative-caret-position="184">
+              <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -75,8 +78,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/runtime.txt" />
-        <option value="$PROJECT_DIR$/BusVRN/settings.py" />
         <option value="$PROJECT_DIR$/config.cfg" />
+        <option value="$PROJECT_DIR$/BusVRN/settings.py" />
       </list>
     </option>
   </component>
@@ -468,16 +471,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BusVRN/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="82" column="6" lean-forward="true" selection-start-line="82" selection-start-column="6" selection-end-line="82" selection-end-column="6" />
+        <state relative-caret-position="184">
+          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="9" />
           <folding />
         </state>
       </provider>

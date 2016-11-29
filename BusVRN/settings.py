@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 conf = configparser.RawConfigParser()
-conf.read("config.cfg")
+conf.read(os.path.join(BASE_DIR, "config.cfg"))
 
 
 # Application definition
@@ -93,14 +93,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'zaUgD5Lt',
+        'PASSWORD': conf.get("base", "PASSWORD"),
         'HOST': '127.0.0.1',
         'PORT': '5433',
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed'
         }
 }
-#'PASSWORD': conf.get("base", "PASSWORD"),
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
