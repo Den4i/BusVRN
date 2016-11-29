@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 conf = configparser.RawConfigParser()
-conf.read(os.path.join(BASE_DIR, "config.cfg"))
+conf.read(os.path.join(BASE_DIR, r"config.cfg"))
 
 
 # Application definition
