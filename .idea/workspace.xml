@@ -27,8 +27,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BusVRN/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+            <state relative-caret-position="450">
+              <caret line="162" column="49" lean-forward="true" selection-start-line="162" selection-start-column="33" selection-end-line="162" selection-end-column="49" />
               <folding>
                 <element signature="e#307#316#0" expanded="true" />
               </folding>
@@ -643,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BusVRN/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+        <state relative-caret-position="450">
+          <caret line="162" column="49" lean-forward="true" selection-start-line="162" selection-start-column="33" selection-end-line="162" selection-end-column="49" />
           <folding>
             <element signature="e#307#316#0" expanded="true" />
           </folding>
