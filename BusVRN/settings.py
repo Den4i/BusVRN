@@ -159,6 +159,6 @@ LOGIN_REDIRECT_URL = '/'
 # SEND EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = 'dglonassik@gmail.com'
+EMAIL_HOST_PASSWORD = 'Xaej5liM1'
 EMAIL_USE_TLS = True
