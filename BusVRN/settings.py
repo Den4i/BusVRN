@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'BusVRN.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'd8tlqn7v235qot',
+        'USER': 'hlfosjhegndfhh',
         'PASSWORD': os.environ.get("PASSWORD", None),
-        'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'HOST': 'ec2-54-235-95-102.compute-1.amazonaws.com',
+        'PORT': '5432',
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed'
         }
