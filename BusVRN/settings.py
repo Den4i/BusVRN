@@ -90,16 +90,19 @@ WSGI_APPLICATION = 'BusVRN.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8tlqn7v235qot',
-        'USER': 'hlfosjhegndfhh',
-        'PASSWORD': '1MEq3Yc9mk5WjF-RA0jxhJ_KOp',
-        'HOST': 'ec2-54-235-95-102.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'zaUgD5Lt',
+        'HOST': '127.0.0.1',
+        'PORT': '5433',
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed'
         }
 }
 
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
