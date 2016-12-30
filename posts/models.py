@@ -18,20 +18,20 @@ class PostManager(models.Manager):
 #     return "%s/%s" % (instance.id, filename)
 
 
-def upload_location():
-    import boto3
-    conn = boto3.connect_s3(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
-    bucket = conn.get_bucket(settings.AWS_STORAGE_BUCKET_NAME)
-    bucket_list = bucket.list()
-    for l in bucket_list:
-        keyString = str(l.key)
+# def upload_location():
+#     import boto3
+#     conn = boto3.connect_s3(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
+#     bucket = conn.get_bucket(settings.AWS_STORAGE_BUCKET_NAME)
+#     bucket_list = bucket.list()
+#     for l in bucket_list:
+#         keyString = str(l.key)
 
 
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     title = models.CharField(max_length=120, verbose_name='Заголовок')
     slug = models.SlugField(max_length=255, unique=True)
-    image = models.ImageField(upload_to=upload_location, null=True, blank=True, width_field="width_field",
+    image = models.ImageField(upload_to='images', null=True, blank=True, width_field="width_field",
                               height_field="height_field")
     width_field = models.IntegerField(default=0)
     height_field = models.IntegerField(default=0)

@@ -148,7 +148,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = "staticfiles"
 
-MEDIA_URL = "/media/"
+#MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -178,5 +178,22 @@ AWS_HEADERS = {
     }
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATICFILES_LOCATION = 'static'
+
+
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+# custom_storages.py
+from storages.backends.s3boto import S3BotoStorage
+
+
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+MEDIAFILES_LOCATION = 'media'
+
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+
