@@ -183,9 +183,6 @@ STATICFILES_LOCATION = 'static'
 
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
-# custom_storages.py
-from storages.backends.s3boto import S3BotoStorage
-
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
