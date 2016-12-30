@@ -14,8 +14,17 @@ class PostManager(models.Manager):
         return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
 
 
-def upload_location(instance, filename):
-    return "%s/%s" % (instance.id, filename)
+# def upload_location(instance, filename):
+#     return "%s/%s" % (instance.id, filename)
+
+
+def upload_location():
+    import boto3
+    conn = boto3.connect_s3(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
+    bucket = conn.get_bucket(settings.AWS_STORAGE_BUCKET_NAME)
+    bucket_list = bucket.list()
+    for l in bucket_list:
+        keyString = str(l.key)
 
 
 class Post(models.Model):
