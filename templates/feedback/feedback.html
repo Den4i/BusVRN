@@ -6,7 +6,7 @@
 
 <H1 align="center">Обратная связь</H1>
     <H2>Пользователь:{{ user }}</H2>
-    <form action="/sending/" method="post">
+    <form action="feedback/sending/" method="post">
         {% csrf_token %}
         {{ form | crispy}}
         <input type="submit" name="subSendMessage" value="Отправить">
