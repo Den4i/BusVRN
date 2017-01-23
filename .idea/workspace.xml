@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="119b3821-68b3-41a8-bf3b-3656cd90d98c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/BusVRN.iml" afterPath="$PROJECT_DIR$/.idea/BusVRN.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/feedback/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/feedback/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/feedback/migrations/__init__.py" afterPath="$PROJECT_DIR$/feedback/migrations/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/feedback/views.py" afterPath="$PROJECT_DIR$/feedback/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polls/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/polls/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polls/migrations/__init__.py" afterPath="$PROJECT_DIR$/polls/migrations/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/views.py" afterPath="$PROJECT_DIR$/posts/views.py" />
-    </list>
+    <list default="true" id="119b3821-68b3-41a8-bf3b-3656cd90d98c" name="Default" comment="" />
     <ignored path="BusVRN.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
