@@ -46,10 +46,6 @@ def post_update(request, slug=None):
 
 def post_detail(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
-    if instance.publish > timezone.now().date() or instance.draft:
-        if not request.user.is_staff or not request.user.is_superuser:
-            raise Http404
-
     initial_data = {
         "content_type": instance.get_content_type,
         "object_id": instance.id,
