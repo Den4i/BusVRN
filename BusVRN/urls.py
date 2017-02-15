@@ -26,21 +26,27 @@ from django.shortcuts import render
 def get_map(request):
     return render(request, 'mappa.html')
 
+
+def hide_welcome(request):
+    request.session['hide'] = 1
+
+
 urlpatterns = [
-	url(r'^admin/', admin.site.urls),
-	url(r'^comments/', include("comments.urls", namespace='comments')),
-	url(r'^Manuals/objects/', include('Manuals.urls')),
-	url(r'^posts/', include("posts.urls", namespace='posts')),
-	url(r'^accounts/', include('registration.backends.default.urls')),
-	url(r'^like_post/$', like_post, name='like_post'),
-	url(r'^feedback/', include("feedback.urls", namespace='feedback')),
-	url(r'^polls/', include('polls.urls', namespace="polls")),
+    url(r'^admin/', admin.site.urls),
+    url(r'^comments/', include("comments.urls", namespace='comments')),
+    url(r'^Manuals/objects/', include('Manuals.urls')),
+    url(r'^posts/', include("posts.urls", namespace='posts')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^like_post/$', like_post, name='like_post'),
+    url(r'^feedback/', include("feedback.urls", namespace='feedback')),
+    url(r'^polls/', include('polls.urls', namespace="polls")),
 
-	url(r'^mappa/', get_map, name='get_mappa'),
+    url(r'^mappa/', get_map, name='get_mappa'),
+    url(r'hide/', hide_welcome, name='hide_welcome'),
 
-	url(r'^', include("posts.urls", namespace='posts')),
+    url(r'^', include("posts.urls", namespace='posts')),
 ]
 
 if settings.DEBUG:
-	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
