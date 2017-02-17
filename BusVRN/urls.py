@@ -27,9 +27,6 @@ def get_map(request):
     return render(request, 'mappa.html')
 
 
-def hide_welcome(request):
-    request.session['hide'] = 1
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -42,7 +39,6 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls', namespace="polls")),
 
     url(r'^mappa/', get_map, name='get_mappa'),
-    url(r'hide/', hide_welcome, name='hide_welcome'),
 
     url(r'^', include("posts.urls", namespace='posts')),
 ]

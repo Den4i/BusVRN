@@ -82,7 +82,7 @@
         <h1>Приветсвутю Вас, {{ request.user }}.</h1>
         <p>Мы рады Вам представить новый новостной портал, посвященный, пассажирскому транспорту города Воронежа. Здесь Вы можете узнать
             новости по данному вопросу, а также предложить для публикации свою.</p>
-        <p><a class="btn btn-primary btn-lg" role="button" id="welcome" href="{% url 'hide_welcome' %}">Скрыть приветствие</a></p>
+        <p><a class="btn btn-primary btn-lg" role="button" id="welcome" >Скрыть приветствие</a></p>
       </div>
     </div>
     {% endif %}
@@ -169,6 +169,7 @@
 
         $("#welcome").click(function () {
            $('.jumbotron').hide();
+           $.cookie('hide', 'yes');
         });
     });
 
