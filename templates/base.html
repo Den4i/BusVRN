@@ -45,10 +45,10 @@
                 <a class="navbar-brand" href="{% url "registration_register"%}">Регистрация</a>
             {% else %}
                 <a class="navbar-brand" href="{% url "posts:create"%}">Добавить новость</a>
-                <a class="navbar-brand" href="{% url "auth_logout"%}">Выход</a>
                 <a class="navbar-brand" href="{% url "feedback:feedback_create"%}">Обратная связь</a>
                 <a class="navbar-brand" href={% url "get_mappa" %}>Карта</a>
                 <a class="navbar-brand" href="{% url "polls:index" %}">Опросы</a>
+                <a class="navbar-brand" href="{% url "auth_logout"%}">Выход</a>
             {% endif %}
         </div>
 
@@ -79,10 +79,9 @@
     {% if request.session.visits == 1 %}
     <div class="jumbotron">
       <div class="container">
-        <h1>Приветсвутю Вас, {{ request.user }}.</h1>
+        <h1>Приветсвую Вас, {{ request.user }}.</h1>
         <p>Мы рады Вам представить новый новостной портал, посвященный, пассажирскому транспорту города Воронежа. Здесь Вы можете узнать
             новости по данному вопросу, а также предложить для публикации свою.</p>
-{#        <p><a class="btn btn-primary btn-lg" role="button">Скрыть приветствие</a></p>#}
       </div>
     </div>
     {% endif %}
