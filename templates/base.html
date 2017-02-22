@@ -9,7 +9,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-{#    <link rel="icon" href="{% static "favicon.ico" %} ">#}
+    <link rel="icon" href="{% static "favicon.ico" %} ">
 
     <title>Новостной сайт BusVRN</title>
 
@@ -79,7 +79,7 @@
     {% if request.session.visits == 1 %}
     <div class="jumbotron">
       <div class="container">
-        <h1>Приветсвую Вас, {{ request.user }}.</h1>
+        <h1>Здравствуйте, {{ request.user }}.</h1>
         <p>Мы рады Вам представить новый новостной портал, посвященный, пассажирскому транспорту города Воронежа. Здесь Вы можете узнать
             новости по данному вопросу, а также предложить для публикации свою.</p>
       </div>
@@ -88,6 +88,7 @@
     {% endif %}
 
     <div class="container">
+        <br><br>
         {% block content %}{% endblock content %}
     </div> <!-- /container -->
 
@@ -96,7 +97,6 @@
             <p align="center" id="inc">&copy; 2016 Denis P, Inc.</p>
         </footer>
     </div>
-
 
     {% include "posts/messages_display.html" %}
 
