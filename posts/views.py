@@ -126,7 +126,7 @@ def post_list(request):
     if last_visit:
         last_visit_time = datetime.strptime(last_visit, "%d-%m-%Y %H:%M:%S")
 
-        if (datetime.now() - last_visit_time).days > 0:
+        if (datetime.now() - last_visit_time).seconds > 60:
             visits = visits + 1
             reset_last_visit_time = True
     else:
