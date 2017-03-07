@@ -1,6 +1,35 @@
 {% extends "base.html" %}
 #{% load staticfiles %}
 
+{% block head_extra %}
+ <script src="http://code.jquery.com/jquery-1.12.3.min.js"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+   $(function() {
+
+       var frm = $('#myform');
+        frm.submit(function () {
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+
+            success: function (data) {
+{#                $("#SOME-DIV").html(data);#}
+                $('#in2').text($('#in1').val())
+            },
+            error: function(data) {
+                $("#MESSAGE-DIV").html("Something went wrong!");
+            }
+        });
+        return false;
+    });
+   });
+</script>
+
+{% endblock %}
+
 {% block content %}
     <style>
       #map {
@@ -10,7 +39,6 @@
     </style>
 
 <div id="map"></div>
-
      <!-- Google Maps JS API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANx3oMu8-ViaOADlea2s_9Ahi01XaLLN8"></script>
     <!-- GMaps Library -->
@@ -22,9 +50,8 @@
         lat: 51.661268,
         lng: 39.200115
       });
-    </script>
 
-    <script>var marker = mapObj.addMarker({
+    var marker = mapObj.addMarker({
             lat: 51.661268,
             lng: 39.200115,
             title: 'Eiffel Tower',
@@ -33,14 +60,24 @@
                 maxWidth: 100
             }
     });
-
     </script>
 
-    <script>
-    var increment = 0.001;
-    setInterval(function() {
-        marker.setPosition( new google.maps.LatLng(marker.getPosition().lat()+Math.random()*0.0002-0.0001, marker.getPosition().lng()+0.0001));
-    },100);
-    </script>
+
+
+<form method="post" id="myform">
+    {% csrf_token %}
+     <input id="in1" type="text" />
+    <button type="submit">Send</button>
+</form>
+
+    <p id="in2"></p>
+
+{#    <script>#}
+{#    var increment = 0.001;#}
+{#    setInterval(function() {#}
+{#        marker.setPosition( new google.maps.LatLng(marker.getPosition().lat()+Math.random()*0.0002-0.0001, marker.getPosition().lng()+0.0001));#}
+{#    },100);#}
+{#    </script>#}
+
 
 {% endblock %}

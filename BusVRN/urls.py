@@ -26,8 +26,6 @@ from django.shortcuts import render
 def get_map(request):
     return render(request, 'mappa.html')
 
-
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^comments/', include("comments.urls", namespace='comments')),
