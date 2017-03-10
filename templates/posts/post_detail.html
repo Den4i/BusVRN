@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class='col-sm-6 col-sm-offset-3'>
+    <div class='col-sm-8 col-sm-offset-2'>
     {% if instance.image %}<img src='{{ instance.image.url }}' class="img-responsive" />{% endif %}
     {% if instance.user.get_full_name %}
         <p>Автор: {{ instance.user.get_full_name }}</p>
