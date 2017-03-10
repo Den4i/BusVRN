@@ -592,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489147192323</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ref">
+      <created>1489147243202</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1489147243202</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -639,9 +646,9 @@
     <MESSAGE value="changed days on seconds" />
     <MESSAGE value="del .container margin" />
     <MESSAGE value="ref welcome message" />
-    <MESSAGE value="ref" />
     <MESSAGE value="ref dev size" />
-    <option name="LAST_COMMIT_MESSAGE" value="ref dev size" />
+    <MESSAGE value="ref" />
+    <option name="LAST_COMMIT_MESSAGE" value="ref" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
