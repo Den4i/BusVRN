@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'zaUgD5Lt',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'client_encoding': 'UTF8',
@@ -146,10 +146,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATIC_ROOT = "staticfiles"
+#STATIC_ROOT = "staticfiles"
+STATIC_URL = '/static/'
 
-#MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+MEDIA_URL = "/media/"
+#MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -168,29 +169,29 @@ EMAIL_HOST_PASSWORD = 'Xaej5liM1'
 EMAIL_USE_TLS = True
 
 
-# AWS S3
-AWS_ACCESS_KEY_ID = 'AKIAILS5TKL4RJPN2WBA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'denispbucket'
-AWS_HEADERS = {
-        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-        'Cache-Control': 'max-age=94608000',
-    }
-
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# # AWS S3
+# AWS_ACCESS_KEY_ID = 'AKIAILS5TKL4RJPN2WBA'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'denispbucket'
+# AWS_HEADERS = {
+#         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+#         'Cache-Control': 'max-age=94608000',
+#     }
+#
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 STATICFILES_LOCATION = 'static'
 
 
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
 MEDIAFILES_LOCATION = 'media'
 
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
 

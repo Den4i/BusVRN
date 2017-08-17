@@ -7,8 +7,9 @@
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <user-name>postgres</user-name>
-      <user-password>dfd0dfcbdfffdfcddfeedf9fdfe6dfde</user-password>
+      <introspection-schemas>postgres:</introspection-schemas>
       <resolve-scope>postgres:postgres,public</resolve-scope>
+      <unqualified-resolve-schemas>postgres:postgres,public</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>
