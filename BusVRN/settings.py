@@ -140,17 +140,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-#STATIC_ROOT = "staticfiles"
-STATIC_URL = '/static/'
+#STATIC_ROOT = "/staticfiles/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 MEDIA_URL = "/media/"
-#MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -179,7 +180,7 @@ EMAIL_USE_TLS = True
 #     }
 #
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-STATICFILES_LOCATION = 'static'
+#STATICFILES_LOCATION = 'static'
 
 
 #STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
@@ -188,7 +189,7 @@ STATICFILES_LOCATION = 'static'
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
-MEDIAFILES_LOCATION = 'media'
+#MEDIAFILES_LOCATION = 'media'
 
 #MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
