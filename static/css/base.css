@@ -15,16 +15,27 @@ p {
     color: whitesmoke;
 }
 
-
-#id_phone{
+#id_phone {
     width: 40%;
 }
 
-#id_subject{
+#id_subject {
     width: 50%;
     height: 60px;
 }
 
-.input-group{
+.input-group {
+    margin-top: 3%;
+}
+
+.col-sm-8 {
+    margin-top: 3%;
+}
+
+#questList {
     margin-top: 20px;
+}
+
+#userAuth, #forgotPassword {
+    color: whitesmoke;
 }
