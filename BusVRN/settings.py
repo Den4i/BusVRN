@@ -48,10 +48,9 @@ INSTALLED_APPS = [
     # local apps
     'Manuals',
     'comments',
-    'posts',
     'feedback',
     'polls',
-    'storages',
+    'posts',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -141,16 +140,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = "staticfiles"
-
 MEDIA_URL = "/media/"
+#MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -168,31 +165,6 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'dglonassik@gmail.com'
 EMAIL_HOST_PASSWORD = 'Xaej5liM1'
 EMAIL_USE_TLS = True
-
-
-# # AWS S3
-# AWS_ACCESS_KEY_ID = 'AKIAILS5TKL4RJPN2WBA'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'denispbucket'
-# AWS_HEADERS = {
-#         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-#         'Cache-Control': 'max-age=94608000',
-#     }
-#
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-#STATICFILES_LOCATION = 'static'
-
-
-#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-
-
-#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-
-#MEDIAFILES_LOCATION = 'media'
-
-#MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
 
