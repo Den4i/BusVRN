@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="119b3821-68b3-41a8-bf3b-3656cd90d98c" name="Default" comment="Замена AWS на локалку">
+    <list default="true" id="119b3821-68b3-41a8-bf3b-3656cd90d98c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BusVRN.iws" />
@@ -651,7 +651,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506722747552</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Конфиг ide">
+      <created>1506723283624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1506723283624</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -704,7 +711,8 @@
     <MESSAGE value="ref" />
     <MESSAGE value="Перенос стилей из шаблонов" />
     <MESSAGE value="Замена AWS на локалку" />
-    <option name="LAST_COMMIT_MESSAGE" value="Замена AWS на локалку" />
+    <MESSAGE value="Конфиг ide" />
+    <option name="LAST_COMMIT_MESSAGE" value="Конфиг ide" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
