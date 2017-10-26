@@ -33,7 +33,6 @@
     <p>Время добавления: {{ instance.timestamp }}</p>
     <p>Количество просмотров: {{ instance.view }}</p>
 
-
     {# Добавление лайка #}
     <p><strong id="like_count"> Мне нравится: {{ instance.likes }}</strong>
     {% if user.is_authenticated %}
@@ -43,25 +42,24 @@
     {% endif %}
     </p>
 
-
     <div>
         <p class='lead'>Комментарии:</p>
         {% if request.user.is_authenticated %}
-        <form method="POST" action="."> {% csrf_token %}
-            {{ comment_form|crispy }}
-            <input type='submit' value='Добавить комментарий' class='btn btn-default'>
-        </form>
+            <form method="POST" action="."> {% csrf_token %}
+                {{ comment_form|crispy }}
+                <input type='submit' value='Добавить комментарий' class='btn btn-default'>
+            </form>
         {% else %}
-        <p>Вы должны авторизоваться, чтобы комментировать</p>
-        {% endif %}
-        <hr/>
-        {% for comment in comments %}
+            <p>Вы должны авторизоваться, чтобы комментировать</p>
+            {% endif %}
+            <hr/>
 
+        {% for comment in comments %}
         <blockquote>
             <p>{{ comment.content }}</p>
             <footer>от {{ comment.user }} | {{ comment.timestamp|timesince }} назад |
                 {% if comment.children.count > 0 %}
-                    {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %} | {% endif %}
+                    {{ comment.children.count }} Комментарий {% if comment.children.count > 1 %}s{% endif %} | {% endif %}
                 <a class='comment-reply-btn' href='#'>Ответить</a> |
                 <a class='' href='{{ comment.get_absolute_url }}'>Thread</a>
             </footer>
@@ -78,7 +76,7 @@
                 <form method="POST" action="."> {% csrf_token %}
                     {{ comment_form|crispy }}
                     <input type='hidden' name='parent_id' value='{{ comment.id }}'>
-                    <input type='submit' value='Reply' class='btn btn-default'>
+                    <input type='submit' value='Ответить' class='btn btn-default'>
                 </form>
                 {% else %}
                     <p>You must login to comment </p>
@@ -89,7 +87,6 @@
         <hr/>
         {% endfor %}
     </div>
-
     </div>
 
 {% endblock content %}
