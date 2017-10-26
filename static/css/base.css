@@ -9,6 +9,7 @@
 
 p {
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    margin-top: 10px;
 }
 
 .navbar-header .navbar-brand{
@@ -38,4 +39,8 @@ p {
 
 #userAuth, #forgotPassword {
     color: whitesmoke;
+}
+
+.selectdatewidget {
+    width: 50%;
 }

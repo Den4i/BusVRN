@@ -16,32 +16,28 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{% static "css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{% static "css/jumpbotron.css" %}" rel="stylesheet">
 
     {% block head_extra %}{% endblock head_extra %}
     <link href="{% static "css/base.css" %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
   </head>
 
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-          </button>
-            <a class="navbar-brand" href="{% url "posts:list"%}">BusVRN</a>
+            <a class="navbar-brand fa fa-home fa-2x" href="{% url "posts:list"%}">BusVRN</a>
             {% if not request.user.is_authenticated %}
-                <a class="navbar-brand" href="{% url "registration_register"%}">Регистрация</a>
+                <a class="navbar-brand fa fa-2x" href="{% url "registration_register"%}">Регистрация</a>
             {% else %}
-                <a class="navbar-brand" href="{% url "posts:create"%}">Добавить новость</a>
-                <a class="navbar-brand" href="{% url "feedback:feedback_create"%}">Обратная связь</a>
-                <a class="navbar-brand" href={% url "get_mappa" %}>Карта</a>
-                <a class="navbar-brand" href="{% url "polls:index" %}">Опросы</a>
-                <a class="navbar-brand" href="{% url "auth_logout"%}">Выход</a>
+                <a class="navbar-brand fa fa-book fa-2x" href="{% url "posts:create"%}">Добавить новость</a>
+                <a class="navbar-brand fa fa-pencil fa-2x" href="{% url "feedback:feedback_create"%}">Обратная связь</a>
+                <a class="navbar-brand fa fa-2x" href={% url "get_mappa" %}>Карта</a>
+                <a class="navbar-brand fa fa-2x" href="{% url "polls:index" %}">Опросы</a>
+                <a class="navbar-brand fa fa-shield fa-2x" href="{% url "auth_logout"%}">Выход</a>
             {% endif %}
         </div>
 
