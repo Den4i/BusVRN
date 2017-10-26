@@ -31,8 +31,6 @@ ALLOWED_HOSTS = []
 conf = configparser.RawConfigParser()
 conf.read(os.path.join(os.path.dirname(__file__), r'config.cfg'))
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +44,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'registration',
     # local apps
-    'Manuals',
     'comments',
     'feedback',
     'polls',
