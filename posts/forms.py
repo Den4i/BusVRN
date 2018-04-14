@@ -6,6 +6,8 @@ from .models import Post
 class PostForm(forms.ModelForm):
     content = forms.CharField(widget=PagedownWidget(show_preview=False), label='Содержание')
     publish = forms.DateField(widget=forms.SelectDateWidget, label='Дата публикации')
+    image = forms.FileField(widget=forms.FileInput, label='Изображение')
+    draft = forms.ChoiceField(widget=forms.CheckboxInput, label='Черновик')
 
     class Meta:
         model = Post
