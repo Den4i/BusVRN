@@ -15,29 +15,33 @@ Including another URLconf
 """
 
 from django.conf import settings
-from django.conf.urls import include, url
+# from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from posts.views import like_post
+
+from django.urls import path, include
 
 from django.shortcuts import render
+
+from posts.views import like_post, post_list
 
 
 def get_map(request):
     return render(request, 'mappa.html')
 
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^comments/', include("comments.urls", namespace='comments')),
-    url(r'^posts/', include("posts.urls", namespace='posts')),
-    url(r'^accounts/', include('registration.backends.default.urls')),
-    url(r'^like_post/$', like_post, name='like_post'),
-    url(r'^feedback/', include("feedback.urls", namespace='feedback')),
-    url(r'^polls/', include('polls.urls', namespace="polls")),
+    path('admin/', admin.site.urls),
+    path('comments/', include("comments.urls")),
+    path('posts/', include("posts.urls")),
+    path('accounts/', include('registration.backends.default.urls')),
+    path('like_post/', like_post, name='like_post'),
+    path('feedback/', include("feedback.urls")),
+    path('polls/', include('polls.urls')),
 
-    url(r'^mappa/', get_map, name='get_mappa'),
+    path('mappa/', get_map, name='get_mappa'),
 
-    url(r'^', include("posts.urls", namespace='posts')),
+    path('', post_list, name='post_list'),
 ]
 
 if settings.DEBUG:

@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse_lazy
 from django.db.models.signals import pre_save
 from django.utils import timezone
 from django.contrib.contenttypes.models import ContentType
@@ -19,7 +19,7 @@ def upload_location(instance, filename):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     title = models.CharField(max_length=120, verbose_name='Заголовок')
     slug = models.SlugField(max_length=255, unique=True)
     image = models.ImageField(upload_to='images', null=True, blank=True, width_field="width_field",
@@ -41,7 +41,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("posts:detail", kwargs={"slug": self.slug})
+        return reverse_lazy("posts:detail", kwargs={"slug": self.slug})
 
     class Meta:
         ordering = ["-timestamp"]
