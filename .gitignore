@@ -1,5 +1,8 @@
 BusVRN/config.cfg
 media/
+idea/
+migrations/*
+
 
 venv
 *.pyc
