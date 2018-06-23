@@ -1,10 +1,13 @@
 dj-database-url==0.5.0
-Django==2.0.4
+Django==2.0.6
 django-crispy-forms==1.7.2
 django-pagedown==1.0.4
 django-registration-redux==2.4
-gunicorn==19.7.1
-psycopg2==2.7.4
+gunicorn==19.8.1
 pytils==0.3
 boto==2.48.0
 Pillow==5.1.0
+celery==4.2.0
+configparser==3.5.0
+psycopg2-binary-2.7.5
+
