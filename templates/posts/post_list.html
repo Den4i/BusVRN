@@ -11,7 +11,7 @@
         </span>
     </div>
 </form>
-<br>
+
     {% for obj in object_list %}
         <div class="row">
             <div class="col-sm-12">
@@ -27,7 +27,7 @@
                             Staff only:  Future Post
                         {% endif %}
                         <h3>
-                            <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a><br>
+                            <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
                             <small>{{ obj.publish }}</small>
                         </h3>
                         {% if obj.user.get_full_name %}

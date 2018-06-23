@@ -34,7 +34,7 @@
     <p>Количество просмотров: {{ instance.view }}</p>
 
     {# Добавление лайка #}
-    <p><strong id="like_count"> Мне нравится: {{ instance.likes }}</strong>
+    <p>Мне нравится: <b id="like_count">{{ instance.likes }}</b>
     {% if user.is_authenticated %}
         <button id="likes" data-postid="{{instance.id}}" class="btn btn-primary" type="button">
             <span class="glyphicon glyphicon-thumbs-up"></span>Like
