@@ -1,13 +1,12 @@
 from django import forms
-from pagedown.widgets import PagedownWidget
-from .models import FeedbackModel
+from .models import Feedback
 
 
 class FeedbackForm(forms.ModelForm):
-	subject = forms.CharField(widget=PagedownWidget(show_preview=False), label='Тема обращения')
-	feedtext = forms.CharField(widget=PagedownWidget(show_preview=False), label='Содержание')
-	phone = forms.CharField(label='Контактный телефон', max_length=11)
+    subject = forms.CharField(label='Тема обращения')
+    feedtext = forms.CharField(widget=forms.Textarea(attrs={'rows': 10, 'cols': 10}), label='Содержание')
+    phone = forms.CharField(label='Контактный телефон', max_length=11)
 
-	class Meta:
-		model = FeedbackModel
-		fields = ["subject", "feedtext", "phone"]
+    class Meta:
+        model = Feedback
+        fields = ["subject", "feedtext", "phone"]
