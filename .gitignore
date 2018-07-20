@@ -1,6 +1,6 @@
 BusVRN/config.cfg
 media/
-idea/
+.idea/*
 migrations/*
 
 
