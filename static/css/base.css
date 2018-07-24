@@ -32,3 +32,8 @@ p {
 .selectdatewidget {
     width: 50%;
 }
+
+#map {
+    width: 800px;
+    height: 600px;
+}
