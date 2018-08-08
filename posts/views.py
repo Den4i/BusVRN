@@ -6,12 +6,12 @@ from django.utils import timezone
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
-from .models import Post
+from .models import Post, LikePost
 from .forms import PostForm
 from comments.models import Comment
 from comments.forms import CommentForm
-from datetime import datetime
 
 
 def post_create(request):
@@ -162,11 +162,25 @@ def like_post(request):
     post_id = None
     if request.method == 'GET':
         post_id = request.GET['post_id']
-    likes = 0
+
     if post_id:
         post = Post.objects.get(id=int(post_id))
         if post:
-            likes = post.likes + 1
-            post.likes = likes
-            post.save()
-    return HttpResponse(likes)
+            exist_like_post = LikePost.objects.filter(user=request.user, post=post_id)
+
+            if not exist_like_post:
+                likes = post.likes + 1
+                post.likes = likes
+                post.save()
+                LikePost.objects.create(user=request.user, post=post)
+
+                return HttpResponse(likes)
+            else:
+                likes = post.likes - 1
+                if likes < 0:
+                    likes = 0
+                post.likes = likes
+                post.save()
+                exist_like_post.delete()
+
+            return HttpResponse(post.likes)

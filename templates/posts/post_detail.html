@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block head_title %}
     {{ instance.title }}!{{ block.super }}
@@ -33,14 +34,14 @@
     <p>Время добавления: {{ instance.timestamp }}</p>
     <p>Количество просмотров: {{ instance.view }}</p>
 
-    {# Добавление лайка #}
-    <p>Мне нравится: <b id="like_count">{{ instance.likes }}</b>
-    {% if user.is_authenticated %}
-        <button id="likes" data-postid="{{instance.id}}" class="btn btn-primary" type="button">
-            <span class="glyphicon glyphicon-thumbs-up"></span>Like
-        </button>
-    {% endif %}
-    </p>
+    <div>
+        <div id="like_div_text">Мне нравится: <b id="like_count">{{ instance.likes }}</b></div>
+            {% if user.is_authenticated %}
+                <div id="likes" data-postid="{{instance.id}}"
+                    style="background-image: url({% static "like_outline_24.svg" %})"></div>
+            {% endif %}
+    </div>
+
 
     <div>
         <p class='lead'>Комментарии:</p>

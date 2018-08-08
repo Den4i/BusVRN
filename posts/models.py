@@ -7,6 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from pytils.translit import slugify
 from comments.models import Comment
 from .utils import get_read_time
+from django.contrib.auth.models import User
 
 
 class PostManager(models.Manager):
@@ -83,6 +84,9 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(pre_save_post_receiver, sender=Post)
 
 
+class LikePost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
 
 
