@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
@@ -174,7 +174,7 @@ def like_post(request):
                 post.save()
                 LikePost.objects.create(user=request.user, post=post)
 
-                return HttpResponse(likes)
+                return JsonResponse({'likes': likes, 'active': True})
             else:
                 likes = post.likes - 1
                 if likes < 0:
@@ -183,4 +183,4 @@ def like_post(request):
                 post.save()
                 exist_like_post.delete()
 
-            return HttpResponse(post.likes)
+            return JsonResponse({'likes': likes, 'active': False})
