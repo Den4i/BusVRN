@@ -1,11 +1,13 @@
 $('.comment-reply-btn').click(function (event) {
     event.preventDefault();
-    $(this).parent().next('.comment-reply').fadeToggle();
+    if (event.defaultPrevented){
+        $(this).parent().next('.comment-reply').fadeToggle();
+    }
 });
 
 $('.content-markdown').each(function () {
-    var content = $(this).text();
-    var markedContent = marked(content);
+    let content = $(this).text();
+    let markedContent = marked(content);
     $(this).html(markedContent)
 });
 
@@ -13,10 +15,10 @@ $('.content-markdown img').each(function () {
     $(this).addClass("img-responsive")
 });
 
-var contentInput = $('#id_content');
+let contentInput = $('#id_content');
 
 function setContent(value) {
-    var markedContent = marked(value);
+    let markedContent = marked(value);
     $('#preview-content').html(markedContent);
     $('#preview-content img').each(function () {
         $(this).addClass("img-responsive")
@@ -24,16 +26,13 @@ function setContent(value) {
 }
 
 contentInput.keyup(function () {
-    var newContent = $(this).val();
+    let newContent = $(this).val();
     setContent(newContent)
 });
 
-var titleInput = $('#id_title');
-function setTitle(value) {
-    $('#preview-title').text(value)
-}
+let titleInput = $('#id_title');
 
 titleInput.keyup(function () {
-    var newTitle = $(this).val();
-    setTitle(newTitle)
+    let newTitle = $(this).val();
+    $('#preview-title').text(newTitle)
 });

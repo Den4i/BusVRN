@@ -1,7 +1,7 @@
 BusVRN/config.cfg
 media/
 .idea/*
-migrations/*
+*/migrations/*
 
 
 venv
@@ -94,9 +94,3 @@ celerybeat-schedule
 .venv/
 venv/
 ENV/
-
-# Spyder project settings
-.spyderproject
-
-# Rope project settings
-.ropeproject
