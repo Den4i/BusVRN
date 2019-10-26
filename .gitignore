@@ -1,9 +1,8 @@
 BusVRN/config.cfg
 media/
 .idea/*
-*/migrations/*
 
-
+env_bus
 venv
 *.pyc
 staticfiles
