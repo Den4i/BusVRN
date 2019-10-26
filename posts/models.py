@@ -20,21 +20,21 @@ def upload_location(instance, filename):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE, verbose_name='Пользователь')
     title = models.CharField(max_length=120, verbose_name='Заголовок')
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
     image = models.ImageField(upload_to='images', null=True, blank=True, width_field="width_field",
-                              height_field="height_field")
+                              height_field="height_field", verbose_name='Изображение')
     width_field = models.IntegerField(default=0)
     height_field = models.IntegerField(default=0)
-    content = models.TextField()
-    draft = models.BooleanField(default=False)
+    content = models.TextField(verbose_name='Текст')
+    draft = models.BooleanField(default=False, verbose_name='Черновик')
     publish = models.DateField(auto_now_add=False, auto_now=False, verbose_name='Дата публикации')
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-    read_time = models.IntegerField()
+    read_time = models.IntegerField(verbose_name='Время прочтения', null=True, blank=True)
 
-    view = models.PositiveIntegerField(default=0)
-    likes = models.PositiveIntegerField(default=0)
+    view = models.PositiveIntegerField(default=0, verbose_name='Просмотры')
+    likes = models.PositiveIntegerField(default=0, verbose_name='Нравится')
 
     objects = PostManager()
 
@@ -46,6 +46,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-timestamp"]
+        verbose_name_plural = 'Статьи'
 
     @property
     def comments(self):
@@ -77,8 +78,9 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_slug(instance)
 
     if instance.content:
-        read_time = get_read_time(instance.content)
-        instance.read_time = read_time
+        if not instance.read_time:
+            read_time = get_read_time(instance.content)
+            instance.read_time = read_time
 
 
 pre_save.connect(pre_save_post_receiver, sender=Post)
@@ -87,6 +89,3 @@ pre_save.connect(pre_save_post_receiver, sender=Post)
 class LikePost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-
-
-
