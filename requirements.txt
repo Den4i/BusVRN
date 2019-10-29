@@ -18,7 +18,7 @@ kombu==4.6.5
 mccabe==0.6.1
 more-itertools==7.2.0
 phonenumbers==8.10.21
-Pillow==6.0.0
+Pillow==6.2.0
 psycopg2-binary==2.7.5
 pycodestyle==2.5.0
 pyflakes==2.1.1
