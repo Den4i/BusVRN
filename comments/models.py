@@ -23,7 +23,7 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     parent = models.ForeignKey("self", null=True, blank=True,  on_delete=models.CASCADE)
-    timestamp = models.DateField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
 
     objects = CommentManager()
