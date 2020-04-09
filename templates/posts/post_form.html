@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="col-sm-8">
-        <h1>Предпросмотр</h1></hr>
+        <h1>Предпросмотр</h1>
         <div class="content-preview">
             <h3 id="preview-title"></h3>
             <p id="preview-content"></p>
@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-8">
     <h1>Форма</h1><hr>
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy}}
     <input type="submit" class="btn btn-default" value="Создать новость"><hr>
