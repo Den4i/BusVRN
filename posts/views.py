@@ -111,11 +111,10 @@ def post_list(request):
     try:
         queryset = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        queryset = paginator.page(1)
+        queryset = paginator.get_page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
-        queryset = paginator.page(paginator.num_pages)
+        queryset = paginator.get_page(paginator.num_pages)
 
     visits = request.session.get('visits')
     if not visits:
