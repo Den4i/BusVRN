@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'registration',
     'phonenumber_field',
     # local apps
+    'advuser',
     'comments',
     'feedback',
     'polls',
@@ -144,3 +145,5 @@ EMAIL_HOST_PASSWORD = conf['EMAIL']['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = conf['EMAIL']['EMAIL_USE_TLS']
 
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
+
+AUTH_USER_MODEL = 'advuser.AdvUser'
