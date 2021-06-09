@@ -5,7 +5,7 @@ boto==2.49.0
 celery==4.4.6
 configparser==5.0.0
 dj-database-url==0.5.0
-Django==2.2.13
+Django==2.2.22
 django-crispy-forms==1.9.2
 django-pagedown==2.1.2
 django-phonenumber-field==4.0.0
